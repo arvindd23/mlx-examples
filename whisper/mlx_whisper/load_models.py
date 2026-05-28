@@ -1,7 +1,6 @@
 # Copyright © 2023 Apple Inc.
 
 import json
-import re
 from pathlib import Path
 
 import mlx.core as mx
@@ -106,7 +105,7 @@ def load_model(
     # Convert HF weight keys to MLX format
     if is_hf:
         weights = _convert_hf_weights(weights)
-        
+
     weights = {
         k: v.astype(dtype)
         if v.dtype in (mx.float16, mx.bfloat16, mx.float32) and v.dtype != dtype
